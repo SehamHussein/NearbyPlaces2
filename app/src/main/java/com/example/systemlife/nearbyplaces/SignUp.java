@@ -23,6 +23,15 @@ public class SignUp extends AppCompatActivity {
 
         addPhoto = (FloatingActionButton) findViewById(R.id.add);
         image = (ImageView) findViewById(R.id.imageView);
+        addPhoto.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick (View v){
+                Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                gallery.setType("image/*");
+                startActivityForResult(gallery, 1);
+            }
+        });
     }
 
     @Override
@@ -36,17 +45,10 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
-    addPhoto.setOnClickListener(new View.OnClickListener()
 
-    {
-        public void onClick (View v){
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        gallery.setType("image/*");
-        startActivityForResult(gallery, 1);
-    }
-    });
 
     public void onClick(View view) {
         Intent intent = new Intent(this, SingIn.class);
     }
 }
+//https://stackoverflow.com/questions/44500176/setting-up-gradle-for-api-26-android
