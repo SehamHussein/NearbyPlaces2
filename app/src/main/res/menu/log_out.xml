@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fav"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:iconTint="#000000"
+        android:onClick="favor"
+        android:title="favorite"
+        app:showAsAction="always"
+        android:checkable="true"
+        />
+    <item
+        android:id="@+id/logout"
+        android:checkable="true"
+        android:enabled="false"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
+        android:iconTint="#000000"
+        android:onClick="logout"
+        android:title="Log Out"
+        android:visible="false"
+        app:showAsAction="always" />
+</menu>

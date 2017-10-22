@@ -10,7 +10,5 @@
         <item name="android:colorPrimary">@color/headColor</item>
         <item name="android:navigationBarColor">@color/statusBarColor</item>
 
-
-
     </style>
 </resources>
