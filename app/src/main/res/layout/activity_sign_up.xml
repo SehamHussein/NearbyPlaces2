@@ -44,7 +44,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintVertical_bias="0.0" />
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/fullName"
         android:layout_width="365dp"
         android:layout_height="57dp"
@@ -52,7 +52,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="FULL NAME"
+        android:hint="FULL NAME"
         android:textColor="#AAAAAC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.004" />
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/email"
         android:layout_width="365dp"
         android:layout_height="57dp"
@@ -69,7 +69,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:inputType="textEmailAddress"
-        android:text="EMAIL"
+        android:hint="EMAIL"
         android:textColor="#AAAAAC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -77,7 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fullName"
         app:layout_constraintVertical_bias="0.011" />
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/pass"
         android:layout_width="365dp"
         android:layout_height="57dp"
@@ -86,7 +86,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:inputType="textPassword"
-        android:text="PASSWORD"
+        android:hint="PASSWORD"
         android:textColor="#AAAAAC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.0" />
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/birthDate"
         android:layout_width="365dp"
         android:layout_height="57dp"
@@ -103,7 +103,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:inputType="date"
-        android:text="BIRTHDAY"
+        android:hint="BIRTHDAY"
         android:textColor="#AAAAAC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

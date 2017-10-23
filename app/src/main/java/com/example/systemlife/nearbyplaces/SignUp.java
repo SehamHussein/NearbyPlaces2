@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -19,10 +20,10 @@ import com.google.gson.Gson;
 public class SignUp extends AppCompatActivity {
     FloatingActionButton addPhoto;
     ImageView image;
-    AutoCompleteTextView fullName;
-    AutoCompleteTextView email;
-    AutoCompleteTextView pass;
-    AutoCompleteTextView birthDate;
+    EditText fullName;
+    EditText email;
+    EditText pass;
+    EditText birthDate;
     Button signUp;
 
     static final int REQUEST_PICK_IMAGE = 1;
@@ -52,16 +53,16 @@ public class SignUp extends AppCompatActivity {
 
         {
             public void onClick(View v) {
-                Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                Intent gallery = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                 gallery.setType("image/*");
                 startActivityForResult(gallery, 1);
             }
         });
 
-        fullName = (AutoCompleteTextView) findViewById(R.id.fullName);
-        email = (AutoCompleteTextView) findViewById(R.id.email);
-        pass = (AutoCompleteTextView) findViewById(R.id.pass);
-        birthDate = (AutoCompleteTextView) findViewById(R.id.birthDate);
+        fullName = (EditText) findViewById(R.id.fullName);
+        email = (EditText) findViewById(R.id.email);
+        pass = (EditText) findViewById(R.id.pass);
+        birthDate = (EditText) findViewById(R.id.birthDate);
         signUp = (Button) findViewById(R.id.signUp);
 
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,8 @@ public class SignUp extends AppCompatActivity {
                 SharedPreferences.Editor editor=sharedPreferences.edit();
                 editor.putString("userData",userDataToGson);
                 editor.apply();
+                Intent intent=new Intent(SignUp.this,Search.class);
+                startActivity(intent);
                 //Intent intent2=new Intent(getApplicationContext(),Customer.class);
                 //startActivity(intent2);
                 //https://stackoverflow.com/questions/6112269/android-keep-username-in-session-until-logout
@@ -92,8 +95,10 @@ public class SignUp extends AppCompatActivity {
 
 
     public void onClick(View view) {
-        Intent intent = new Intent(this, SingIn.class);
+        Intent intent = new Intent(SignUp.this, SingIn.class);
         startActivity(intent);
     }
 }
 //https://stackoverflow.com/questions/44500176/setting-up-gradle-for-api-26-android
+//TextInputLayout
+//toolbar as action bar android

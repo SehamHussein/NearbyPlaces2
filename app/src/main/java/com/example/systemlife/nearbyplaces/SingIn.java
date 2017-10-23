@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -14,8 +15,8 @@ import com.google.gson.Gson;
 import static com.example.systemlife.nearbyplaces.SignUp.SHARED_PREF_NAME;
 
 public class SingIn extends AppCompatActivity {
-    AutoCompleteTextView userName;
-    AutoCompleteTextView passWord;
+    EditText userName;
+    EditText passWord;
     Button signIn;
 
     @Override
@@ -24,8 +25,8 @@ public class SingIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         Intent i = getIntent();
 
-        userName = (AutoCompleteTextView) findViewById(R.id.userName);
-        passWord = (AutoCompleteTextView) findViewById(R.id.passWord);
+        userName = (EditText) findViewById(R.id.userName);
+        passWord = (EditText) findViewById(R.id.passWord);
         signIn = (Button) findViewById(R.id.signIn);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,8 +39,8 @@ public class SingIn extends AppCompatActivity {
                 if (String.valueOf(userName).equals(String.valueOf(userFromShared.getEmail())) &&
                         String.valueOf(passWord).equals(String.valueOf(userFromShared.getPassword()
                         ))) {
-                    //Intent intent = new Intent(this, SignUp.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(SingIn.this, Search.class);
+                    startActivity(intent);
                     Toast.makeText(SingIn.this,"Welcome "+userFromShared.getUsername().toString(),Toast.LENGTH_LONG).show();
                 }
             }
@@ -48,7 +49,8 @@ public class SingIn extends AppCompatActivity {
     }
 
     public void onClick2(View view) {
-        Intent intent = new Intent(this, SignUp.class);
+        Intent intent2 = new Intent(this, SignUp.class);
+        startActivity(intent2);
     }
 }
 //https://stackoverflow.com/questions/23005656/android-method-with-default-package-visibility-overriding-shouldnt-work-but

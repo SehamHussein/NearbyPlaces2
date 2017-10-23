@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.example.systemlife.nearbyplaces.DataModels.FavModel;
 import com.example.systemlife.nearbyplaces.R;
@@ -31,7 +32,6 @@ public class FavAdapter extends ArrayAdapter<FavModel> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView==null){
             convertView= LayoutInflater.from(getContext()).inflate(R.layout.fav_row,parent,false);
-
         }
         FavModel favModel=getItem(position);
         ImageView image=convertView.findViewById(R.id.imageView3);

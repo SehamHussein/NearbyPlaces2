@@ -4,13 +4,12 @@
 
     <item
         android:id="@+id/fav"
+        android:checkable="true"
         android:icon="@drawable/ic_favorite_black_24dp"
         android:iconTint="#000000"
         android:onClick="favor"
         android:title="favorite"
-        app:showAsAction="always"
-        android:checkable="true"
-        />
+        app:showAsAction="always" />
     <item
         android:id="@+id/logout"
         android:checkable="true"
@@ -19,6 +18,6 @@
         android:iconTint="#000000"
         android:onClick="logout"
         android:title="Log Out"
-        android:visible="false"
+        android:visible="true"
         app:showAsAction="always" />
 </menu>
