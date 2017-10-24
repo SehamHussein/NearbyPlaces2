@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-
+    android:orientation="vertical"
     >
 
     <ImageView
@@ -15,4 +15,10 @@
         app:srcCompat="@mipmap/ic_launcher_round"
 
         />
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@id/text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:height="100dp"
+        android:width="150dp"/>
 </android.support.v4.widget.NestedScrollView>

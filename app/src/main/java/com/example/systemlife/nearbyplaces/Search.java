@@ -19,13 +19,9 @@ ListView fav;
         setContentView(R.layout.activity_search);
         Intent i=getIntent();
         Intent i2=getIntent();
+        Intent i3=getIntent();
         fav=(ListView) findViewById(R.id.listView);
     }
-
-
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

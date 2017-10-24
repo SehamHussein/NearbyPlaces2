@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.regex.Pattern;
+
 import static com.example.systemlife.nearbyplaces.SignUp.SHARED_PREF_NAME;
 
 public class SingIn extends AppCompatActivity {
@@ -23,15 +25,17 @@ public class SingIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        Intent i = getIntent();
 
+        Intent i = getIntent();
+        if (!getSharedPreferences(SHARED_PREF_NAME, 0).equals(null)) {
+            Intent i2 = new Intent(this, Search.class);
+        }
         userName = (EditText) findViewById(R.id.userName);
         passWord = (EditText) findViewById(R.id.passWord);
         signIn = (Button) findViewById(R.id.signIn);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, 0);
                 String user = sharedPreferences.getString("user", null);
                 UserData userFromShared = new Gson().fromJson(user, UserData.class);
@@ -41,15 +45,14 @@ public class SingIn extends AppCompatActivity {
                         ))) {
                     Intent intent = new Intent(SingIn.this, Search.class);
                     startActivity(intent);
-                    Toast.makeText(SingIn.this,"Welcome "+userFromShared.getUsername().toString(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(SingIn.this, "Welcome " + userFromShared.getUsername().toString(), Toast.LENGTH_LONG).show();
                 }
             }
         });
-
     }
 
     public void onClick2(View view) {
-        Intent intent2 = new Intent(this, SignUp.class);
+        Intent intent2 = new Intent(SingIn.this, SignUp.class);
         startActivity(intent2);
     }
 }

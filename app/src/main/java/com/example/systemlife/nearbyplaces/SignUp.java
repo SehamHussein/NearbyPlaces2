@@ -28,7 +28,15 @@ public class SignUp extends AppCompatActivity {
 
     static final int REQUEST_PICK_IMAGE = 1;
     //protected static final SharedPreferences settings = null;
-    static final String SHARED_PREF_NAME="user";
+    static final String SHARED_PREF_NAME = "user";
+
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -53,7 +61,7 @@ public class SignUp extends AppCompatActivity {
 
         {
             public void onClick(View v) {
-                Intent gallery = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                Intent gallery = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                 gallery.setType("image/*");
                 startActivityForResult(gallery, 1);
             }
@@ -75,24 +83,22 @@ public class SignUp extends AppCompatActivity {
 //                editor.putString("email",String.valueOf(email));
 //                editor.putString("birthdate",String.valueOf(birthDate));
 //                editor.putString("image",String.valueOf(image));
-
-                UserData userData = new UserData(String.valueOf(fullName), String.valueOf(pass), String.valueOf(email));
-                String userDataToGson = new Gson().toJson(userData);
-                SharedPreferences  sharedPreferences= getSharedPreferences(SHARED_PREF_NAME,0);
-                SharedPreferences.Editor editor=sharedPreferences.edit();
-                editor.putString("userData",userDataToGson);
-                editor.apply();
-                Intent intent=new Intent(SignUp.this,Search.class);
-                startActivity(intent);
-                //Intent intent2=new Intent(getApplicationContext(),Customer.class);
-                //startActivity(intent2);
-                //https://stackoverflow.com/questions/6112269/android-keep-username-in-session-until-logout
+                if (isValidEmail(email.getText().toString())) {
+                    UserData userData = new UserData(String.valueOf(fullName), String.valueOf(pass), String.valueOf(email));
+                    String userDataToGson = new Gson().toJson(userData);
+                    SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, 0);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("userData", userDataToGson);
+                    editor.apply();
+                    Intent intent = new Intent(SignUp.this, Search.class);
+                    startActivity(intent);
+                    //Intent intent2=new Intent(getApplicationContext(),Customer.class);
+                    //startActivity(intent2);
+                    //https://stackoverflow.com/questions/6112269/android-keep-username-in-session-until-logout
+                } else email.setError("the E-mail is not valid");
             }
         });
-
-
     }
-
 
     public void onClick(View view) {
         Intent intent = new Intent(SignUp.this, SingIn.class);
