@@ -31,9 +31,6 @@ public class FavModel {
         this.photos = photos;
     }
 
-    public FavModel() {
-    }
-
     String types;
     String[] photos={"photo_reference"};
 }

@@ -5,4 +5,32 @@ package com.example.systemlife.nearbyplaces.DataModels;
  */
 
 public class NearModel {
+    float rating;
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
+
+    public String[] getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(String[] photos) {
+        this.photos = photos;
+    }
+
+    String types;
+    String[] photos={"photo_reference"};
 }
