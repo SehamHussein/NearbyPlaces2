@@ -51,3 +51,5 @@ public class NearAdapter extends ArrayAdapter<NearModel> {
         return convertView;
     }
 }
+//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=&keyword=cruise&key=AIzaSyA0lnpD55lQP6OE7UltnxNskewWcbfB4aE
+//http://www.jsonschema2pojo.org/
