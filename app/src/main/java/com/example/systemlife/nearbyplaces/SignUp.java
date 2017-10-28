@@ -76,21 +76,23 @@ public class SignUp extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences prefs = getSharedPreferences(SHARED_PREF_NAME, 0);
-                SharedPreferences.Editor editor = prefs.edit();
+                if (isValidEmail(email.getText().toString())) {
+                    SharedPreferences prefs = getSharedPreferences(SHARED_PREF_NAME, 0);
+                    SharedPreferences.Editor editor = prefs.edit();
 //                editor.putString("username",fullName.getText().toString());
 //                editor.putString("password",pass.getText().toString());
 //                editor.putString("email",email.getText().toString());
 //                editor.putString("birthdate",birthDate.getText().toString());
 //                editor.apply();
-                editor.putString("username", fullName.getText().toString());
-                editor.putString("password", pass.getText().toString());
-                editor.putString("email", email.getText().toString());
-                editor.putString("birthdate", birthDate.getText().toString());
-                editor.apply();
-                //editor.putString("image",String.valueOf(image));
-                Toast.makeText(SignUp.this, "welcom " + prefs.getString("username", "no data"), Toast.LENGTH_SHORT).show();
-                prefs.getString("username", "no data");
+                    editor.putString("username", fullName.getText().toString());
+                    editor.putString("password", pass.getText().toString());
+                    editor.putString("email", email.getText().toString());
+                    editor.putString("birthdate", birthDate.getText().toString());
+                    editor.apply();
+                    //editor.putString("image",String.valueOf(image));
+                    Toast.makeText(SignUp.this, "welcom " + prefs.getString("username", "no data"), Toast.LENGTH_SHORT).show();
+                    prefs.getString("username", "no data");
+                } else email.setError("the E-mail is not valid");
 
 //                if (isValidEmail(email.getText().toString())) {
 //                    UserData userData = new UserData(String.valueOf(fullName), String.valueOf(pass), String.valueOf(email));

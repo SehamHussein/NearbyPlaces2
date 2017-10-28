@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -35,6 +36,7 @@ import java.util.List;
 import static com.example.systemlife.nearbyplaces.SignUp.SHARED_PREF_NAME;
 
 public class Search extends AppCompatActivity {
+    private static final String TAG =Search.class.getName() ;
     ListView fav;
     ListView near;
     ImageView logout;
@@ -92,6 +94,7 @@ public class Search extends AppCompatActivity {
     }
 
     void executeWebService(String url) {
+        Log.d(TAG, "executeWebService: "+url);
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -100,6 +103,7 @@ public class Search extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("results");
+                            Log.d("ooo", "onResponse: "+jsonArray);
                             final NearModel[] nearModels;
                             nearModels = new Gson().fromJson(jsonArray.toString(), NearModel[].class);
                             NearAdapter nearAdapter = new NearAdapter(Search.this, nearModels);
@@ -109,7 +113,7 @@ public class Search extends AppCompatActivity {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                                     Intent intent = new Intent(Search.this, Details.class);
-                                    intent.putExtra("nearModels", (Serializable) nearModels[i]);
+                                    intent.putExtra("nearModels",  nearModels[i]);
                                     startActivity(intent);
                                     finish();
                                 }
