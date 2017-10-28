@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.example.systemlife.nearbyplaces.DataModels.FavModel;
 import com.example.systemlife.nearbyplaces.R;
@@ -35,7 +37,16 @@ public class FavAdapter extends ArrayAdapter<FavModel> {
         }
         FavModel favModel=getItem(position);
         ImageView image=convertView.findViewById(R.id.imageView3);
-        Picasso.with(getContext()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference="+favModel.getPhotos()+"&key=AIzaSyCDSBYodVcO7O8Qaz_Fn7qU5mgDlh99Qww").into(image);
+        Picasso.with(getContext()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference="+favModel.getPhotos().get(position).getPhoto_reference()+"&key=AIzaSyCDSBYodVcO7O8Qaz_Fn7qU5mgDlh99Qww").into(image);
+
+        TextView typeFav=(TextView) convertView.findViewById(R.id.typeFav);
+        typeFav.setText(favModel.getTypes());
+
+        RatingBar rating=(RatingBar)convertView.findViewById(R.id.ratingBar);
+        rating.setRating(favModel.getRating());
+
+        TextView openinghour=(TextView)convertView.findViewById(R.id.openingfav);
+        openinghour.setText(favModel.getOpening_hours());
 
         return convertView;
     }

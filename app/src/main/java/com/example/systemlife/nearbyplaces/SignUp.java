@@ -76,33 +76,45 @@ public class SignUp extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//                SharedPreferences.Editor editor = settings.edit();
-//                editor.putString("username", String.valueOf(fullName));
-//                editor.putString("password",String.valueOf(pass));
-//                editor.putString("email",String.valueOf(email));
-//                editor.putString("birthdate",String.valueOf(birthDate));
-//                editor.putString("image",String.valueOf(image));
-                if (isValidEmail(email.getText().toString())) {
-                    UserData userData = new UserData(String.valueOf(fullName), String.valueOf(pass), String.valueOf(email));
-                    String userDataToGson = new Gson().toJson(userData);
-                    SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, 0);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("userData", userDataToGson);
-                    editor.apply();
-                    Intent intent = new Intent(SignUp.this, Search.class);
-                    startActivity(intent);
-                    //Intent intent2=new Intent(getApplicationContext(),Customer.class);
-                    //startActivity(intent2);
-                    //https://stackoverflow.com/questions/6112269/android-keep-username-in-session-until-logout
-                } else email.setError("the E-mail is not valid");
+                SharedPreferences prefs = getSharedPreferences(SHARED_PREF_NAME, 0);
+                SharedPreferences.Editor editor = prefs.edit();
+//                editor.putString("username",fullName.getText().toString());
+//                editor.putString("password",pass.getText().toString());
+//                editor.putString("email",email.getText().toString());
+//                editor.putString("birthdate",birthDate.getText().toString());
+//                editor.apply();
+                editor.putString("username", fullName.getText().toString());
+                editor.putString("password", pass.getText().toString());
+                editor.putString("email", email.getText().toString());
+                editor.putString("birthdate", birthDate.getText().toString());
+                editor.apply();
+                //editor.putString("image",String.valueOf(image));
+                Toast.makeText(SignUp.this, "welcom " + prefs.getString("username", "no data"), Toast.LENGTH_SHORT).show();
+                prefs.getString("username", "no data");
+
+//                if (isValidEmail(email.getText().toString())) {
+//                    UserData userData = new UserData(String.valueOf(fullName), String.valueOf(pass), String.valueOf(email));
+//                    String userDataToGson = new Gson().toJson(userData);
+//                    SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, 0);
+//                    SharedPreferences.Editor editor = sharedPreferences.edit();
+//                    Toast.makeText(SignUp.this, userDataToGson, Toast.LENGTH_LONG).show();
+//                    editor.putString("userData", userDataToGson);
+//                    editor.apply();
+                Intent intent = new Intent(SignUp.this, Search.class);
+                startActivity(intent);
+                finish();
+//                    //Intent intent2=new Intent(getApplicationContext(),Customer.class);
+//                    //startActivity(intent2);
+//                    //https://stackoverflow.com/questions/6112269/android-keep-username-in-session-until-logout
+//                } else email.setError("the E-mail is not valid");
             }
         });
     }
 
     public void onClick(View view) {
-        Intent intent = new Intent(SignUp.this, SingIn.class);
-        startActivity(intent);
+        Intent intent2 = new Intent(SignUp.this, SingIn.class);
+        startActivity(intent2);
+        finish();
     }
 }
 //https://stackoverflow.com/questions/44500176/setting-up-gradle-for-api-26-android

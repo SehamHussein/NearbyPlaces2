@@ -9,12 +9,12 @@
     tools:context="com.example.systemlife.nearbyplaces.Search">
 
     <android.support.v7.widget.Toolbar
-        android:layout_width="385dp"
-        android:layout_height="51dp"
-        tools:layout_editor_absoluteX="-1dp"
+        android:layout_width="412dp"
+        android:layout_height="50dp"
+        tools:layout_editor_absoluteX="0dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="0dp"
-        android:background="@color/statusBarColor"
+        android:background="#019ADD"
         app:titleTextColor="#FFFFFF"
         android:id="@+id/toolbar">
     </android.support.v7.widget.Toolbar>
@@ -67,21 +67,22 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="34dp"
-        android:layout_height="40dp"
+        android:layout_height="43dp"
         app:srcCompat="@drawable/ic_search_black_24dp"
-        android:backgroundTint="#0089D2"
-        app:layout_constraintTop_toTopOf="@+id/editText"
+        android:background="#F6F6F6"
+        android:clickable="true"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="@+id/editText"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/editText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.615"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintVertical_bias="0.0"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/textView7"
@@ -142,7 +143,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/favor"
         android:layout_width="28dp"
         android:layout_height="27dp"
         app:srcCompat="@drawable/ic_favorite_black_24dp"
@@ -159,13 +160,13 @@
         app:layout_constraintHorizontal_bias="0.7" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/logout"
         android:layout_width="28dp"
-        android:layout_height="29dp"
+        android:layout_height="27dp"
         app:srcCompat="@drawable/ic_power_settings_new_black_24dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="527dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
@@ -173,9 +174,10 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.941"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ListView
+        android:id="@+id/near"
         android:layout_width="377dp"
         android:layout_height="175dp"
         android:layout_marginBottom="8dp"

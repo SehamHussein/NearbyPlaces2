@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.systemlife.nearbyplaces.DataModels.FavModel;
 import com.example.systemlife.nearbyplaces.DataModels.NearModel;
@@ -28,13 +29,14 @@ public class NearAdapter extends ArrayAdapter<NearModel> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        if (convertView==null){
-            convertView= LayoutInflater.from(getContext()).inflate(R.layout.near_row,parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.near_row, parent, false);
         }
-        NearModel nearModel=getItem(position);
-        ImageView image=convertView.findViewById(R.id.imageView6);
-        Picasso.with(getContext()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference="+nearModel.getPhotos()+"&key=AIzaSyCDSBYodVcO7O8Qaz_Fn7qU5mgDlh99Qww").into(image);
-
+        NearModel nearModel = getItem(position);
+        ImageView image = (ImageView) convertView.findViewById(R.id.imageView6);
+        Picasso.with(getContext()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference=" + nearModel.getPhotos().get(position).getPhoto_reference() + "&key=AIzaSyCDSBYodVcO7O8Qaz_Fn7qU5mgDlh99Qww").into(image);
+        TextView types = (TextView) convertView.findViewById(R.id.type);
+        types.setText(nearModel.getTypes());
 
         return convertView;
     }

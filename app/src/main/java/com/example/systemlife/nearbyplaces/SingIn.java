@@ -25,28 +25,34 @@ public class SingIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-
         Intent i = getIntent();
-        if (!getSharedPreferences(SHARED_PREF_NAME, 0).equals(null)) {
-            Intent i2 = new Intent(this, Search.class);
+        Intent i2=getIntent();
+
+        final SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, 0);
+        final String user = sharedPreferences.getString("email", null);
+        final String pw=sharedPreferences.getString("password", null);
+
+        if (!(user==null)) {
+            Intent intent = new Intent(this, Search.class);
+            startActivity(intent);
+            finish();
         }
         userName = (EditText) findViewById(R.id.userName);
         passWord = (EditText) findViewById(R.id.passWord);
         signIn = (Button) findViewById(R.id.signIn);
+
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, 0);
-                String user = sharedPreferences.getString("user", null);
-                UserData userFromShared = new Gson().fromJson(user, UserData.class);
-
-                if (String.valueOf(userName).equals(String.valueOf(userFromShared.getEmail())) &&
-                        String.valueOf(passWord).equals(String.valueOf(userFromShared.getPassword()
-                        ))) {
+                if (userName.getText().toString().equals(user) &&
+                        passWord.getText().toString().equals(pw))
+                {
                     Intent intent = new Intent(SingIn.this, Search.class);
                     startActivity(intent);
-                    Toast.makeText(SingIn.this, "Welcome " + userFromShared.getUsername().toString(), Toast.LENGTH_LONG).show();
+                    finish();
+                    Toast.makeText(SingIn.this, "Welcome " + sharedPreferences.getString("username","no data"), Toast.LENGTH_LONG).show();
                 }
+                else Toast.makeText(SingIn.this, "you are not sign up", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -54,6 +60,7 @@ public class SingIn extends AppCompatActivity {
     public void onClick2(View view) {
         Intent intent2 = new Intent(SingIn.this, SignUp.class);
         startActivity(intent2);
+        finish();
     }
 }
 //https://stackoverflow.com/questions/23005656/android-method-with-default-package-visibility-overriding-shouldnt-work-but
