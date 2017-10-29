@@ -92,8 +92,6 @@ public class SignUp extends AppCompatActivity {
                     //editor.putString("image",String.valueOf(image));
                     Toast.makeText(SignUp.this, "welcom " + prefs.getString("username", "no data"), Toast.LENGTH_SHORT).show();
                     prefs.getString("username", "no data");
-                } else email.setError("the E-mail is not valid");
-
 //                if (isValidEmail(email.getText().toString())) {
 //                    UserData userData = new UserData(String.valueOf(fullName), String.valueOf(pass), String.valueOf(email));
 //                    String userDataToGson = new Gson().toJson(userData);
@@ -102,9 +100,10 @@ public class SignUp extends AppCompatActivity {
 //                    Toast.makeText(SignUp.this, userDataToGson, Toast.LENGTH_LONG).show();
 //                    editor.putString("userData", userDataToGson);
 //                    editor.apply();
-                Intent intent = new Intent(SignUp.this, Search.class);
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(SignUp.this, Search.class);
+                    startActivity(intent);
+                    finish();
+                } else email.setError("the E-mail is not valid");
 //                    //Intent intent2=new Intent(getApplicationContext(),Customer.class);
 //                    //startActivity(intent2);
 //                    //https://stackoverflow.com/questions/6112269/android-keep-username-in-session-until-logout
