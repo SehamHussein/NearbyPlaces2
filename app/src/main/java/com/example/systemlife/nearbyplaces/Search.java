@@ -2,11 +2,10 @@ package com.example.systemlife.nearbyplaces;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.LocationListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -20,9 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.systemlife.nearbyplaces.Adapters.FavAdapter;
 import com.example.systemlife.nearbyplaces.Adapters.NearAdapter;
-import com.example.systemlife.nearbyplaces.DataModels.FavModel;
 import com.example.systemlife.nearbyplaces.DataModels.NearModel;
 import com.google.gson.Gson;
 
@@ -31,7 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.util.List;
 
 import static com.example.systemlife.nearbyplaces.SignUp.SHARED_PREF_NAME;
 
@@ -71,14 +67,12 @@ public class Search extends AppCompatActivity {
                 finish();
             }
         });
-
         favor = (ImageView) findViewById(R.id.favor);
         favor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Search.this, Favorite.class);
                 startActivity(intent);
-                finish();
             }
         });
         searshTxt = (EditText) findViewById(R.id.editText);
@@ -92,7 +86,6 @@ public class Search extends AppCompatActivity {
             }
         });
     }
-
     void executeWebService(String url) {
         Log.d(TAG, "executeWebService: "+url);
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -107,13 +100,12 @@ public class Search extends AppCompatActivity {
                             final NearModel[] nearModels;
                             nearModels = new Gson().fromJson(jsonArray.toString(), NearModel[].class);
                             NearAdapter nearAdapter = new NearAdapter(Search.this, nearModels);
-                            fav.setAdapter(nearAdapter);
-                            fav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+                            near.setAdapter(nearAdapter);
+                            near.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                                     Intent intent = new Intent(Search.this, Details.class);
-                                    intent.putExtra("nearModels",  nearModels[i]);
+                                    intent.putExtra("nearModels", (Serializable) nearModels[i]);
                                     startActivity(intent);
                                     finish();
                                 }

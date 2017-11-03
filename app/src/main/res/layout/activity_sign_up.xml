@@ -104,6 +104,7 @@
         android:layout_marginTop="8dp"
         android:inputType="date"
         android:hint="BIRTHDAY"
+        android:focusable="false"
         android:textColor="#AAAAAC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

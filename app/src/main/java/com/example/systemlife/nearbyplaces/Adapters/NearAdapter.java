@@ -22,7 +22,7 @@ import com.squareup.picasso.Picasso;
  */
 
 public class NearAdapter extends ArrayAdapter<NearModel> {
-    private static final String TAG = NearAdapter.class.getName() ;
+    private static final String TAG = NearAdapter.class.getName();
 
     public NearAdapter(@NonNull Context context, @NonNull NearModel[] objects) {
         super(context, 0, objects);
@@ -39,14 +39,18 @@ public class NearAdapter extends ArrayAdapter<NearModel> {
         ImageView image = (ImageView) convertView.findViewById(R.id.imageView6);
         Picasso.with(getContext()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference=" + nearModel.getPhotos().get(0).getPhotoReference() + "&key=AIzaSyCDSBYodVcO7O8Qaz_Fn7qU5mgDlh99Qww").into(image);
         TextView types = (TextView) convertView.findViewById(R.id.type);
-
-        String type="[ ";
-        for (String s : nearModel.getTypes()) {
-            type=type+s+" , ";
-        }
-        type=type+" ]";
-        Log.d(TAG, "getView: "+type);
-        types.setText(type);
+        types.setText((CharSequence) nearModel.getTypes());
+        TextView name = (TextView) convertView.findViewById(R.id.textView11);
+        name.setText(nearModel.getName());
+        TextView open = (TextView) convertView.findViewById(R.id.textView12);
+        open.setText("opening Hours : " + nearModel.getOpeningHours());
+//        String type="[ ";
+//        for (String s : nearModel.getTypes()) {
+//            type=type+s+" , ";
+//        }
+//        type=type+" ]";
+//        Log.d(TAG, "getView: "+type);
+//        types.setText(type);
 
         return convertView;
     }

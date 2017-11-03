@@ -1,5 +1,8 @@
 package com.example.systemlife.nearbyplaces.DataModels;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -8,121 +11,141 @@ import java.util.List;
  */
 
 public class FavModel implements Serializable {
-    String name="";
-    private String number="";
-    private String address="";
-    private static final long serialVersionUID = 46543445;
+    @SerializedName("geometry")
+    @Expose
+    private Geometry geometry;
+    @SerializedName("icon")
+    @Expose
+    private String icon;
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("opening_hours")
+    @Expose
+    private OpeningHours openingHours;
+    @SerializedName("photos")
+    @Expose
+    private List<Photo> photos = null;
+    @SerializedName("place_id")
+    @Expose
+    private String placeId;
+    @SerializedName("rating")
+    @Expose
+    private Double rating;
+    @SerializedName("reference")
+    @Expose
+    private String reference;
+    @SerializedName("scope")
+    @Expose
+    private String scope;
+    @SerializedName("types")
+    @Expose
+    private List<String> types = null;
+    @SerializedName("vicinity")
+    @Expose
+    private String vicinity;
+    private final static long serialVersionUID = 2095983323813714635L;
 
-    public void setName(String name)
-    {
-        this.name = name;
+    public Geometry getGeometry() {
+        return geometry;
     }
 
-    public void setNumber(String number)
-    {
-        this.number = number;
+    public void setGeometry(Geometry geometry) {
+        this.geometry = geometry;
     }
 
-    public void setAddress(String address)
-    {
-        this.address = address;
+    public String getIcon() {
+        return icon;
     }
 
-    public String getName()
-    {
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public String getNumber()
-    {
-        return number;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getAddress()
-    {
-        return address;
+    public OpeningHours getOpeningHours() {
+        return openingHours;
     }
 
-    float rating;
-    String types;
-
-    public String getOpening_hours() {
-        return opening_hours;
+    public void setOpeningHours(OpeningHours openingHours) {
+        this.openingHours = openingHours;
     }
 
-    public void setOpening_hours(String opening_hours) {
-        this.opening_hours = opening_hours;
-    }
-
-    String opening_hours;
-
-    private List<photo> photos;
-
-    public List<photo> getPhotos() {
+    public List<Photo> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(List<photo> photos) {
+    public void setPhotos(List<Photo> photos) {
         this.photos = photos;
     }
 
-    public float getRating() {
+    public String getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
+    }
+
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
-    public String getTypes() {
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    public List<String> getTypes() {
         return types;
     }
 
-    public void setTypes(String types) {
+    public void setTypes(List<String> types) {
         this.types = types;
     }
 
-
-    public class photo{
-        private String photo_reference;
-        private String html_attributions;
-        private float height;
-        private float width;
-
-        public String getPhoto_reference() {
-            return photo_reference;
-        }
-
-        public void setPhoto_reference(String photo_reference) {
-            this.photo_reference = photo_reference;
-        }
-
-        public String getHtml_attributions() {
-            return html_attributions;
-        }
-
-        public void setHtml_attributions(String html_attributions) {
-            this.html_attributions = html_attributions;
-        }
-
-        public float getHeight() {
-            return height;
-        }
-
-        public void setHeight(float height) {
-            this.height = height;
-        }
-
-        public float getWidth() {
-            return width;
-        }
-
-        public void setWidth(float width) {
-            this.width = width;
-        }
+    public String getVicinity() {
+        return vicinity;
     }
 
+    public void setVicinity(String vicinity) {
+        this.vicinity = vicinity;
     }
+
+}
 
 
 
